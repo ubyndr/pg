@@ -1,0 +1,197 @@
+Prefix(:=<http://www.semanticweb.org/davidos/ontologies/2020/9/untitled-ontology-21#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.semanticweb.org/davidos/ontologies/2020/9/untitled-ontology-21>
+
+Declaration(Class(:Barbaresco))
+Declaration(Class(:Barolo))
+Declaration(Class(:Canaiolo))
+Declaration(Class(:Chablis_wine))
+Declaration(Class(:Chardonnay))
+Declaration(Class(:Chianti_wine))
+Declaration(Class(:French_wine))
+Declaration(Class(:Italian_wine))
+Declaration(Class(:Malvasia_bianca))
+Declaration(Class(:Nebbiolo))
+Declaration(Class(:Sangiovesse))
+Declaration(Class(:Zinfandel))
+Declaration(Class(:color))
+Declaration(Class(:red))
+Declaration(Class(:red_wine))
+Declaration(Class(:region))
+Declaration(Class(:rose))
+Declaration(Class(:varietal))
+Declaration(Class(:white))
+Declaration(Class(:white_wine))
+Declaration(Class(:wine))
+Declaration(ObjectProperty(:grown_in))
+Declaration(ObjectProperty(:has_color))
+Declaration(ObjectProperty(:made_from))
+Declaration(ObjectProperty(:region_of))
+Declaration(DataProperty(:year))
+Declaration(NamedIndividual(:Barolo_Villero_2015))
+Declaration(NamedIndividual(:Burgundy))
+Declaration(NamedIndividual(:Chablis))
+Declaration(NamedIndividual(:Chianti))
+Declaration(NamedIndividual(:France))
+Declaration(NamedIndividual(:Italy))
+Declaration(NamedIndividual(:Piedmont))
+Declaration(NamedIndividual(:Puglia))
+Declaration(AnnotationProperty(:also_called))
+############################
+#   Annotation Properties
+############################
+
+# Annotation Property: :also_called (:also_called)
+
+AnnotationAssertion(rdfs:comment :also_called "Primitivo")
+
+
+############################
+#   Object Properties
+############################
+
+# Object Property: :region_of (:region_of)
+
+TransitiveObjectProperty(:region_of)
+
+
+
+
+############################
+#   Classes
+############################
+
+# Class: :Barbaresco (:Barbaresco)
+
+SubClassOf(:Barbaresco :wine)
+SubClassOf(:Barbaresco ObjectSomeValuesFrom(:has_color :red))
+SubClassOf(:Barbaresco ObjectSomeValuesFrom(:made_from :Nebbiolo))
+SubClassOf(:Barbaresco ObjectHasValue(:grown_in :Piedmont))
+
+# Class: :Barolo (:Barolo)
+
+SubClassOf(:Barolo :wine)
+SubClassOf(:Barolo ObjectSomeValuesFrom(:has_color :red))
+SubClassOf(:Barolo ObjectSomeValuesFrom(:made_from :Nebbiolo))
+SubClassOf(:Barolo ObjectHasValue(:grown_in :Piedmont))
+
+# Class: :Canaiolo (:Canaiolo)
+
+SubClassOf(:Canaiolo :varietal)
+
+# Class: :Chablis_wine (:Chablis_wine)
+
+SubClassOf(:Chablis_wine :wine)
+SubClassOf(:Chablis_wine ObjectSomeValuesFrom(:has_color :white))
+SubClassOf(:Chablis_wine ObjectSomeValuesFrom(:made_from :Chardonnay))
+SubClassOf(:Chablis_wine ObjectHasValue(:grown_in :Chablis))
+
+# Class: :Chardonnay (:Chardonnay)
+
+SubClassOf(:Chardonnay :varietal)
+
+# Class: :Chianti_wine (:Chianti_wine)
+
+SubClassOf(:Chianti_wine :wine)
+SubClassOf(:Chianti_wine ObjectSomeValuesFrom(:has_color :red))
+SubClassOf(:Chianti_wine ObjectSomeValuesFrom(:made_from :Canaiolo))
+SubClassOf(:Chianti_wine ObjectSomeValuesFrom(:made_from :Malvasia_bianca))
+SubClassOf(:Chianti_wine ObjectSomeValuesFrom(:made_from :Sangiovesse))
+SubClassOf(:Chianti_wine ObjectHasValue(:grown_in :Chianti))
+
+# Class: :French_wine (:French_wine)
+
+EquivalentClasses(:French_wine ObjectIntersectionOf(:wine ObjectHasValue(:grown_in :France)))
+
+# Class: :Italian_wine (:Italian_wine)
+
+EquivalentClasses(:Italian_wine ObjectIntersectionOf(:wine ObjectHasValue(:grown_in :Italy)))
+
+# Class: :Malvasia_bianca (:Malvasia_bianca)
+
+SubClassOf(:Malvasia_bianca :varietal)
+
+# Class: :Nebbiolo (:Nebbiolo)
+
+SubClassOf(:Nebbiolo :varietal)
+
+# Class: :Sangiovesse (:Sangiovesse)
+
+SubClassOf(:Sangiovesse :varietal)
+
+# Class: :Zinfandel (:Zinfandel)
+
+AnnotationAssertion(:also_called :Zinfandel "Primitivo")
+SubClassOf(:Zinfandel :varietal)
+
+# Class: :red (:red)
+
+SubClassOf(:red :color)
+
+# Class: :red_wine (:red_wine)
+
+EquivalentClasses(:red_wine ObjectIntersectionOf(:wine ObjectSomeValuesFrom(:has_color :red)))
+
+# Class: :rose (:rose)
+
+SubClassOf(:rose :color)
+
+# Class: :white (:white)
+
+SubClassOf(:white :color)
+
+# Class: :white_wine (:white_wine)
+
+EquivalentClasses(:white_wine ObjectIntersectionOf(:wine ObjectSomeValuesFrom(:has_color :white)))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :Barolo_Villero_2015 (:Barolo_Villero_2015)
+
+ClassAssertion(:Barolo :Barolo_Villero_2015)
+DataPropertyAssertion(:year :Barolo_Villero_2015 "2015"^^xsd:integer)
+
+# Individual: :Burgundy (:Burgundy)
+
+ClassAssertion(:region :Burgundy)
+ObjectPropertyAssertion(:region_of :Burgundy :France)
+
+# Individual: :Chablis (:Chablis)
+
+ClassAssertion(:region :Chablis)
+ObjectPropertyAssertion(:region_of :Chablis :Burgundy)
+
+# Individual: :Chianti (:Chianti)
+
+ObjectPropertyAssertion(:region_of :Chianti :Italy)
+
+# Individual: :France (:France)
+
+ClassAssertion(:region :France)
+
+# Individual: :Italy (:Italy)
+
+ClassAssertion(:region :Italy)
+
+# Individual: :Piedmont (:Piedmont)
+
+ClassAssertion(:region :Piedmont)
+ObjectPropertyAssertion(:region_of :Piedmont :Italy)
+
+# Individual: :Puglia (:Puglia)
+
+ClassAssertion(:region :Puglia)
+ObjectPropertyAssertion(:region_of :Puglia :Italy)
+
+
+SubObjectPropertyOf(ObjectPropertyChain(:grown_in :region_of) :grown_in)
+)

@@ -51,6 +51,7 @@ class list_wines(Resource):
         print('Wines are listed in ', time.time() - start, ' seconds')
         return result, 200
 
+
 # Request parser is added for faceted wine query
 parser = reqparse.RequestParser()
 parser.add_argument('region', required=False, help='Wine region, can be empty')
